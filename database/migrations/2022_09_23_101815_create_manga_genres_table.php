@@ -12,13 +12,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    {   Schema::enableForeignKeyConstraints();
         Schema::create('manga_genres', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('mangas_id');
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('mangas_id')->references('id')->on('mangas')->onDelete('cascade');
-            $table->foreign('genre_id')->references('id')->on('genre')->onDelete('cascade');
+            $table->increments('id');
+            $table->unsignedBigInteger('mangas_id')->unsigned();
+            $table->unsignedBigInteger('genre_id')->unsigned();
+            $table->foreign('mangas_id')->references('id')->on('mangas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('genre_id')->references('id')->on('genre')->onDelete('cascade')->onUpdate('cascade');
 
             
             

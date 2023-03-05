@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+       
         Schema::create('genre', function (Blueprint $table) {
             $table->id();
             $table->string('genre_name'); 
-            $table->integer('manga_genres_id')->unsigned();
-            $table->foreign('manga_genres_id')->references('id')->on('manga_genres')->onDelete('cascade');
             $table->timestamps();
         });
     }

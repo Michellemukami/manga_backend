@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+
         Schema::create('mangas', function (Blueprint $table) {
             $table->id();
             $table->string('manga_name');
