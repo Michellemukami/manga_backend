@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('manga_chaps', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('file');
+            $table->string('chap_file');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manga_chaps');
+    Schema::dropIfExists('manga_chaps');
     }
 };

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class manga_chap extends Model
 {
+    protected $table = 'manga_chaps';
+    protected $fillable = [ 'chap_file' ];
     use HasFactory;
 }

@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class manga_vol extends Model
 {
-    use HasFactory;
+    
+    protected $table = 'manga_vols';
+    protected $fillable = 'vol_name';
     public function manga_chap()
     {
         return $this->hasMany(manga_chap::class);
     }
+    use HasFactory;
 }

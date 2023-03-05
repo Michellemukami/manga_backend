@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('manga_genres', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->unsignedBigInteger('mangas_id');
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('mangas_id')->references('id')->on('mangas')->onDelete('cascade');
+            $table->foreign('genre_id')->references('id')->on('genre')->onDelete('cascade');
+
+            
             
         });
     }
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manga_genres');
+    Schema::dropIfExists('manga_genres');
     }
 };

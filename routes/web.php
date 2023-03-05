@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,8 @@ Route::get('/', function () {
 });
 Route::get('/uploadpage', function () {
     return view('uploadpage');});
+Route::get('/uploadpage', [GenreController::class,'uploadgenre']); 
 Route::post('/uploadmanga', [PageController::class,'uploadmanga']);
-
 Route::get('/show',[PageController::class,'show']);
 
  Route::get('/view/{id}', [PageController::class,'view']);

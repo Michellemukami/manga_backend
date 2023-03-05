@@ -21,14 +21,68 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        <form action="{{url('uploadmanga')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="text" name="name" placeholder="Manga Name">
-            <input type="text" name="description" placeholder="Manga Description">
-            <input type="file" name="file">
-            <input type="submit" class="bg-green-300 p-5 text-base text-white">>
-        </form>
+        <div class="justify-center flex h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+     
+        <div class="w-full max-w-xs m-auto">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="{{url('uploadmanga')}}" method="post" enctype="multipart/form-data">
+  @csrf
+  <label class="block text-gray-700 text-base text-center mb-2 font-bold mt-2">
+        Manga Upload Form
+      </label>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga Name
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="Manga Name">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga Genre
+      </label>
+      <select name="genre_name">
+                @foreach ($options as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
+            </select>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga Description
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="description" type="text" placeholder="Manga Description">
+    
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga Volume
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="vol_name" placeholder="Manga volume"">
+    </div>
+   
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga Cover Image
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="cover_file" placeholder="Manga Cover image">
+    </div>
+    
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga chapter images
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="chap_file">
+    </div>
+   
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        Submit
+      </button>
+     
+    </div>
+  </form>
+
+</div>
         </div>
+        
     </body>
 </html>
