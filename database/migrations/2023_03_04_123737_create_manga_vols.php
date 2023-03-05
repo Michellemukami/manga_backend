@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('manga_vols', function (Blueprint $table) {
             $table->id();
-            $table->string('vol_name');  
-            $table->timestamps();
+            $table->unsignedBigInteger('mangas_id')->unsigned();
+            $table->unsignedBigInteger('vol_id')->unsigned();
+            $table->foreign('mangas_id')->references('id')->on('mangas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('vol_id')->references('id')->on('volume')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('manga_chaps', function (Blueprint $table) {
+        Schema::create('vol_chaps', function (Blueprint $table) {
             $table->id();
-            $table->string('chap_file');
+            $table->unsignedBigInteger('chap_id');
+            $table->foreign('chap_id')->references('id')->on('chapters');
+            $table->unsignedBigInteger('vol_id');
+            $table->foreign('vol_id')->references('id')->on('volume');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-    Schema::dropIfExists('manga_chaps');
+        Schema::dropIfExists('vol_chaps');
     }
 };
