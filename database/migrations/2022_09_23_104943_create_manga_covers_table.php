@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('manga_covers', function (Blueprint $table) {
             $table->id();
-            $table->string('cover_file');     
+            $table->string('cover_file');   
+            $table->timestamps();  
             
         });
     }

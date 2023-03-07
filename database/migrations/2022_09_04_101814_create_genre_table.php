@@ -16,7 +16,7 @@ return new class extends Migration
        
         Schema::create('genre', function (Blueprint $table) {
             $table->id();
-            $table->string('genre_name'); 
+            $table->string('genre_name')->nullable(); 
             $table->timestamps();
         });
     }

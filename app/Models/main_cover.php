@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class manga_chap extends Model
+class main_cover extends Model
 {
-    protected $table = 'manga_chaps';
-    protected $fillable = [ 'chap_file' ];
+
     use HasFactory;
+    protected $table = 'main_cover';
+    protected $fillable=['cover_file'];  
 }

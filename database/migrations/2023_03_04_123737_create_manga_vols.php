@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vol_id')->unsigned();
             $table->foreign('mangas_id')->references('id')->on('mangas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('vol_id')->references('id')->on('volume')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 

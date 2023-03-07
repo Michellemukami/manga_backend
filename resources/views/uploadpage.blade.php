@@ -20,7 +20,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased dark:bg-gray-900">
         <div class="justify-center flex h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
      
         <div class="w-full max-w-xs m-auto">
@@ -33,19 +33,19 @@
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Manga Name
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="Manga Name">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="manga_name" placeholder="Manga Name">
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Manga Genre
       </label>
-      <select name="genre_name">
-                @foreach ($options as $id => $name)
-                    <option value="{{ $id }}">{{ $name }}</option>
+      <select name="genre">
+                @foreach ($options as $id => $genre_name)
+                    <option value="{{ $id }}">{{ $genre_name }}</option>
                 @endforeach
             </select>
     </div>
-    <div class="mb-6">
+    <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Manga Description
       </label>
@@ -54,14 +54,20 @@
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
-        Manga Volume
+        Manga Volume name
       </label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="vol_name" placeholder="Manga volume"">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Manga Chapter name
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="chap_name" placeholder="Manga volume"">
     </div>
    
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
-        Manga Cover Image
+        Main Cover Image
       </label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="cover_file" placeholder="Manga Cover image">
     </div>
@@ -72,7 +78,12 @@
       </label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="chap_file">
     </div>
-   
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Volume cover images
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="vol_cover_file">
+    </div>
     <div class="flex items-center justify-between">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         Submit
