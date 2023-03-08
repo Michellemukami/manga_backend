@@ -10,10 +10,10 @@ class volume extends Model
     use HasFactory;
     protected $table = 'volume';
     protected $primaryKey = 'vol_id';
-    protected $fillable=['vol_name','chap_id'];  
+    protected $fillable=['vol_name','manga_id'];  
     public function chapter()
     {
-        return $this->hasMany(chapter::class, 'chap_id');
+        return $this->hasMany(chapter::class, 'vol_id');
     }
     public function vol_cover()
     {
