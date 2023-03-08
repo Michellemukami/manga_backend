@@ -9,6 +9,7 @@ class vol_cover extends Model
 {
     use HasFactory;
     protected $table = 'vol_cover';
+    
     protected $fillable=['vol_id','vol_cover_file'];  
     public function volume()
     {

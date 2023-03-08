@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vol_chaps', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('chap_id');
-            $table->foreign('chap_id')->references('id')->on('chapters');
+            $table->string('chap_name');  
+            $table->string('chap_file'); 
             $table->unsignedBigInteger('vol_id');
-            $table->foreign('vol_id')->references('id')->on('volume');
+            $table->foreign('vol_id')->references('id')->on('volume')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vol_chaps');
+        Schema::dropIfExists('chapters');
     }
 };
