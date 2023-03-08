@@ -39,7 +39,8 @@
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Manga Genre
       </label>
-      <select name="genre">
+      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genre" multiple>
+      <option selected>Choose genre</option>
                 @foreach ($options as $id => $genre_name)
                     <option value="{{ $id }}">{{ $genre_name }}</option>
                 @endforeach
@@ -62,7 +63,7 @@
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Manga Chapter name
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="chap_name" placeholder="Manga volume"">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="chap_name" placeholder="Manga Chapter"">
     </div>
    
     <div class="mb-4">

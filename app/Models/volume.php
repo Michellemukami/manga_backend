@@ -14,8 +14,8 @@ class volume extends Model
     {
         return $this->hasMany(chapter::class);
     }
-    public function volume_cover()
+    public function vol_cover()
     {
-        return $this->hasMany(vol_cover::class);
+        return $this->hasMany(vol_cover::class,'vol_id');
     }
 }

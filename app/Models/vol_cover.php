@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class vol_cover extends Model
 {
     use HasFactory;
-    protected $table = 'mangas';
-    protected $fillable=['vol_cover_file'];  
+    protected $table = 'vol_cover';
+    protected $fillable=['vol_id','vol_cover_file'];  
     public function volume()
     {
         return $this->belongsTo(volume::class);
     }
-   
+
+
 }

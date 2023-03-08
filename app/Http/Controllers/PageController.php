@@ -26,18 +26,19 @@ class PageController extends Controller{
         $genreids = $request->input('genre');
         $manga->genre()->sync($genreids);
        
-
-    
-      
-        $volume= [
-
+       
+        $volume= volume::create([
+        
             'vol_name' => $request->input('vol_name'),
            
-        ];
-
-        volume::create($volume);
-
-    
+            ]);
+           
+        $volume->vol_cover()->create([
+        'vol_cover_file' => $request->file('vol_cover_file'),
+        $file = $request->file('vol_cover_file'),
+        $path = $file->store('uploads')]);
+        
+     
 
         $chapter= [
 
@@ -49,6 +50,14 @@ class PageController extends Controller{
         ];
 
         chapter::create($chapter);
+
+        $manga->main_cover()->create([
+            'cover_file' => $request->file('cover_file'),
+            $file = $request->file('cover_file'),
+            $path = $file->store('uploads')   
+        ]);
+            
+       
 
 
         return redirect()->back()->with('success','Manga uploaded successfully');

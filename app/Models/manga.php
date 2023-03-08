@@ -16,10 +16,13 @@ class manga extends Model
     {
         return $this->belongsToMany(genre::class, 'manga_genres', 'mangas_id', 'genre_id') ;
     }  
-    public function manga_cover()
+    public function manga_covers()
     {
         return $this->hasOne(manga_covers::class);
     }
-    
+    public function main_cover()
+    {
+    return $this->hasOne(main_cover::class, 'manga_id');
+    }
 } 
 
