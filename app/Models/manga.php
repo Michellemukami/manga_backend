@@ -27,7 +27,7 @@ class manga extends Model
     }
     public function volume()
     {
-        return $this->hasMany(volume::class, 'vol_id');
+        return $this->hasMany(volume::class, 'manga_id');
     }
 } 
 

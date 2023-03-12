@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use DB;
 use App\Models\manga;
 use App\Models\chapter;
 use App\Models\main_cover;
@@ -23,12 +24,16 @@ class PostController extends Controller
                 'manga_name' => $request->input('manga_name'),
                 'description' => $request->input('description'), 
                 ]);
-        $manga->volumes()->create([
-        'vol_name' => $request->input('vol_name'),]);
+       
         
         $genreids = $request->input('genre');
         $manga->genre()->sync($genreids);
-       
+        
+        $volume= volume::create([
+            'vol_name' => $request->input('vol_name')
+            ]);
+        $manga->volume()->create([
+                'vol_name' => $request->input('vol_name'),]);
         $volume->chapter()->create([
             
             'chap_name' => $request->input('chap_name'),
@@ -40,9 +45,6 @@ class PostController extends Controller
         'vol_cover_file' => $request->file('vol_cover_file'),
         $file = $request->file('vol_cover_file'),
         $path = $file->store('uploads')]);
-
-       
-  
 
         $manga->main_cover()->create([
             'cover_file' => $request->file('cover_file'),
