@@ -40,7 +40,7 @@
        
       </div>
       <div class="mb-4">
-      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genre[]" multiple>
+      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="manga[]" multiple>
       <option selected>Choose Manga</option>
                 @foreach ($options as $id => $manga_name)
                     <option value="{{ $id }}">{{ $manga_name }}</option>
@@ -58,9 +58,9 @@
         <p class="text-sm">Add Manga Genre</p>
         </button>
       </div>
-      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genre[]" multiple>
+      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genres[]" multiple>
       <option selected>Choose genre</option>
-                @foreach ($options as $id => $genre_name)
+                @foreach ($genres as $id => $genre_name)
                     <option value="{{ $id }}">{{ $genre_name }}</option>
                 @endforeach
             </select>
@@ -134,6 +134,9 @@
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
                 Close
+              </button>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-base py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Submit
               </button>
             </div>
           </form>

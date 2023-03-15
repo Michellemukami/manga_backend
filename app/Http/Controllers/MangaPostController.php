@@ -14,6 +14,7 @@ class MangaPostController extends Controller
                 'manga_name' => $request->input('manga_name'),
                 'description' => $request->input('description'), 
                 ]);
+        
         return redirect()->back()->with('success','Manga uploaded successfully');
         
     }
