@@ -11,7 +11,7 @@ class volume extends Model
     protected $table = 'volume';
     protected $primaryKey = 'vol_id';
     protected $fillable=['vol_name','manga_id'];  
-    public function chapter()
+    public function chapters()
     {
         return $this->hasMany(chapter::class, 'vol_id');
     }

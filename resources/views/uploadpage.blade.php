@@ -30,15 +30,34 @@
         Manga Upload Form
       </label>
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
-        Manga Name
-      </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="manga_name" placeholder="Manga Name">
+      <div class="flex justify-between mb-4">
+        <label class="block text-gray-700 text-sm font-bold mt-2">
+          Manga Name
+        </label>
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" onclick="openModal()">
+        <p class="text-sm">Add Manga Details</p>
+        </button>
+       
+      </div>
+      <div class="mb-4">
+      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genre[]" multiple>
+      <option selected>Choose Manga</option>
+                @foreach ($options as $id => $manga_name)
+                    <option value="{{ $id }}">{{ $manga_name }}</option>
+                @endforeach
+            </select>
+      </div>
+    
     </div>
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
-        Manga Genre
-      </label>
+    <div class="flex justify-between mb-4">
+        <label class="block text-gray-700 text-sm font-bold mt-2">
+          Manga Genre
+        </label>
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" onclick="openGenreModal()">
+        <p class="text-sm">Add Manga Genre</p>
+        </button>
+      </div>
       <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genre[]" multiple>
       <option selected>Choose genre</option>
                 @foreach ($options as $id => $genre_name)
@@ -46,13 +65,7 @@
                 @endforeach
             </select>
     </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
-        Manga Description
-      </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="description" type="text" placeholder="Manga Description">
-    
-    </div>
+ 
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Manga Volume name
@@ -92,9 +105,79 @@
      
     </div>
   </form>
+   <div class="fixed z-10 inset-0 overflow-y-auto" style="display: none;" id="modal">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <form action="{{url('/uploadmangadetails')}}" method="post" enctype="multipart/form-data">
+                   @csrf
+              <div>
+                <label class="block text-gray-700 text-sm font-bold mt-2">
+                  Manga Name
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="manga_name" placeholder="Manga Name">
+              </div>
+              <div>
+                    <label class="block text-gray-700 text-sm font-bold mt-2 mb-2">
+              Manga Description
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="description" type="text" placeholder="Manga Description">
+          
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
+                Close
+              </button>
+            </div>
+          </form>
+          </div>
+        </div>
+</div>
+
+<div class="fixed z-10 inset-0 overflow-y-auto" style="display: none;" id="genremodal">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <form action="{{url('uploadgenres')}}" method="post" enctype="multipart/form-data">
+                   @csrf
+              <div>
+                <label class="block text-gray-700 text-sm font-bold mt-2 mb-2">
+                  Manga Genre
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="genre_name" placeholder="Manga genre">
+              </div>
+             
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeGenreModal()">
+                Close
+              </button>
+      
+              <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-base py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Submit
+              </button>
+            
+          </form>
+            </div>
+          </div>
+        </div>
+</div>
 
 </div>
         </div>
-        
+        <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

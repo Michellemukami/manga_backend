@@ -29,17 +29,14 @@ class PostController extends Controller
         $genreids = $request->input('genre');
         $manga->genre()->sync($genreids);
         
-        $volume= volume::create([
-            'vol_name' => $request->input('vol_name')
-            ]);
-        $manga->volume()->create([
-                'vol_name' => $request->input('vol_name'),]);
-        $volume->chapter()->create([
+        $chapter = chapter::create([
             
             'chap_name' => $request->input('chap_name'),
             'chap_file' => $request->file('chap_file'),
             $file = $request->file('chap_file'),
-            $path = $file->store('uploads')]);
+            $path = $file->store('uploads')
+            ]);
+        $chapter = $chapter->volume()->save($chapter);
            
         $volume->vol_cover()->create([
         'vol_cover_file' => $request->file('vol_cover_file'),
