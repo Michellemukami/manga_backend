@@ -10,7 +10,7 @@ class MangaPostController extends Controller
     public function uploadmangadetails(Request $request)
     {   
 
-        $manga= manga::create([
+        $manga = manga::create([
                 'manga_name' => $request->input('manga_name'),
                 'description' => $request->input('description'), 
                 ]);

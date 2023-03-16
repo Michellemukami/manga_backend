@@ -10,7 +10,7 @@ class volume extends Model
     use HasFactory;
     protected $table = 'volume';
     protected $primaryKey = 'vol_id';
-    protected $fillable=['vol_name','manga_id'];  
+    protected $fillable=['vol_name','mangas_id'];  
     public function chapters()
     {
         return $this->hasMany(chapter::class, 'vol_id');
@@ -21,7 +21,7 @@ class volume extends Model
     }
     public function manga()
     {
-        return $this->belongsTo(manga::class) ;
+        return $this->belongsTo(manga::class);
     }
 
 

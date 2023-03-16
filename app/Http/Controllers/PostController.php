@@ -17,27 +17,30 @@ use App\Models\genre;
 
 class PostController extends Controller
 {
-    public function uploadmanga(Request $request)
+    public function uploadmanga( manga $manga, volume $volume, Request $request)
     {   
+        $manga->genre()->sync(
+            
+            $request->input('genre'),
+            $request->input('manga')
+              
+            );
+            
+        $volume= volume::create([
+            'vol_name' => $request->input('vol_name'), 
+            ]);
+        
+        $manga->volume()->save($volume);
 
-        $manga= manga::create([
-                'manga_name' => $request->input('manga_name'),
-                'description' => $request->input('description'), 
-                ]);
-       
-        
-        $genreids = $request->input('genre');
-        $manga->genre()->sync($genreids);
-        
-        $chapter = chapter::create([
+        $volume->chapters()->create([
             
             'chap_name' => $request->input('chap_name'),
             'chap_file' => $request->file('chap_file'),
             $file = $request->file('chap_file'),
             $path = $file->store('uploads')
             ]);
-        $chapter = $chapter->volume()->save($chapter);
-           
+       
+       
         $volume->vol_cover()->create([
         'vol_cover_file' => $request->file('vol_cover_file'),
         $file = $request->file('vol_cover_file'),

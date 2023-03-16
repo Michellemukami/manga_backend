@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('main_cover', function (Blueprint $table) {
             $table->id();
             $table->string('cover_file'); 
-            $table->unsignedBigInteger('manga_id');
-            $table->foreign('manga_id')->references('id')->on('mangas')
+            $table->unsignedBigInteger('mangas_id');
+            $table->foreign('mangas_id')->references('id')->on('mangas')
             ->onDelete('cascade');
             $table->timestamps();
         });

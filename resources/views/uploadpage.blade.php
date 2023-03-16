@@ -40,7 +40,7 @@
        
       </div>
       <div class="mb-4">
-      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="manga[]" multiple>
+      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="manga[]">
       <option selected>Choose Manga</option>
                 @foreach ($options as $id => $manga_name)
                     <option value="{{ $id }}">{{ $manga_name }}</option>
@@ -58,7 +58,7 @@
         <p class="text-sm">Add Manga Genre</p>
         </button>
       </div>
-      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genres[]" multiple>
+      <select class="block w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"name="genres" multiple>
       <option selected>Choose genre</option>
                 @foreach ($genres as $id => $genre_name)
                     <option value="{{ $id }}">{{ $genre_name }}</option>

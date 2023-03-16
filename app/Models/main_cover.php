@@ -9,7 +9,7 @@ class main_cover extends Model
 {
     use HasFactory;
     protected $table = 'main_cover';
-    protected $fillable=['cover_file', 'manga_id'];  
+    protected $fillable=['cover_file', 'mangas_id'];  
     
     public function manga()
     {
